@@ -56,15 +56,19 @@ static void CPUTempMeter_display(Object* cast, RichString* out) {
    // choose the color for the temperature
    double temperature = this->values[0];
    int tempColor;
-   if      (temperature < 60.0)                        tempColor = CRT_colors[TEMPERATURE_COOL];
-   else if (temperature >= 60.0 && temperature < 80.0) tempColor = CRT_colors[TEMPERATURE_MEDIUM];
-   else                                                tempColor = CRT_colors[TEMPERATURE_HOT];
+   if (temperature >= 70) {
+      tempColor = CRT_colors[TEMPERATURE_HOT];
+   } else if (temperature >= 63) {
+      tempColor = CRT_colors[TEMPERATURE_MEDIUM];
+   } else {
+      tempColor = CRT_colors[TEMPERATURE_COOL];
+   }
 
    // output the temperature
    char buffer[20];
-   sprintf(buffer, "%.1f", temperature);
+   sprintf(buffer, "%4.0f", temperature);
    RichString_append(out, tempColor, buffer);
-   RichString_append(out, CRT_colors[METER_TEXT], "\xc2\xb0" "C");
+   RichString_append(out, CRT_colors[METER_TEXT], " \xc2\xb0" "C");
 }
 
 MeterClass CPUTempMeter_class = {

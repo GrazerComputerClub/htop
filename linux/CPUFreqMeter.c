@@ -77,14 +77,18 @@ static void CPUFreqMeter_display(Object* cast, RichString* out) {
 
    // choose the color for the frequency
    int cpufreq = (int)this->values[0];
+   int cpufreqmax = (int)this->total;
    int freqColor;
-   if (cpufreq < 1000)                         freqColor = CRT_colors[CPUFREQ_LOW];
-   else if (cpufreq >= 1000 && cpufreq < 2000) freqColor = CRT_colors[CPUFREQ_MEDIUM];
-   else                                        freqColor = CRT_colors[CPUFREQ_HIGH];
-
+   if (cpufreq>cpufreqmax*0.98f) {
+      freqColor = CRT_colors[CPUFREQ_HIGH];
+   } else if (cpufreq>cpufreqmax*0.75f) {
+      freqColor = CRT_colors[CPUFREQ_MEDIUM];
+   } else {
+      freqColor = CRT_colors[CPUFREQ_LOW];
+   }
    // output the frequence
    char buffer[20];
-   sprintf(buffer, "%d", cpufreq);
+   sprintf(buffer, "%4d", cpufreq);
    RichString_append(out, freqColor, buffer);
    RichString_append(out, CRT_colors[METER_TEXT], " MHz");
 }
