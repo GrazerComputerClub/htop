@@ -4,6 +4,7 @@ trying to get the best of [htop](https://github.com/hishamhm/htop) with addition
 
 build it:
 ```bash
+sudo apt-get install libncurses-dev
 ./autogen.sh
 ./configure
 make
