@@ -10,7 +10,16 @@ sudo apt-get install libncurses-dev autotools-dev automake
 make
 ```
 
-![htop-image](http://i.imgur.com/u2f2tjV.png)
+To activate the new feature (after update or previously started htop) edit htoprc file and 
+add CPUTemp and CPUFreq meters to config.
+
+```bash
+sed -i "s/right_meters=.*/right_meters=Tasks LoadAverage CPUTemp CPUFreq/g" ~/.config/htop/htoprc
+sed -i "s/right_meter_modes=.*/right_meter_modes=2 2 2 2/g" ~/.config/htop/htoprc
+```
+
+
+![htop-image](https://pbs.twimg.com/media/EcwQkIyWkAY3KaV?format=png&name=medium)
 
 [![Build Status](https://travis-ci.org/hishamhm/htop.svg?branch=master)](https://travis-ci.org/hishamhm/htop)
 [![PayPal donate](https://img.shields.io/badge/paypal-donate-green.svg)](http://hisham.hm/htop/index.php?page=donate)
