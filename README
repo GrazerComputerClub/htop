@@ -1,6 +1,6 @@
 htop "by" GrazerComputerClub
 ------------------------
-trying to get the best of [htop](https://github.com/hishamhm/htop) with additional fixes by [wbenny](https://github.com/wbenny/htop).
+trying to get the best of [htop](https://github.com/hishamhm/htop) with additional fixes by [wbenny](https://github.com/wbenny/htop) and some optimizations by GC2.
 
 build it:
 ```bash
