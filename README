@@ -5,9 +5,12 @@ trying to get the best of [htop](https://github.com/hishamhm/htop) with addition
 build it:
 ```bash
 sudo apt-get install libncurses-dev autotools-dev automake
+git clone https://github.com/GrazerComputerClub/htop.git
+cd htop
 ./autogen.sh
 ./configure
 make
+cp ./htop /usr/local/bin
 ```
 
 To activate the new feature (after update or previously started htop) edit htoprc file and 
